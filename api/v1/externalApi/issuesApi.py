@@ -17,3 +17,12 @@ class IssuesApi:
 			if issue['agente'] == usuario:
 				result.append(issue)
 		return result
+
+	def get_for_date(self,fecha):
+		issues = self.get_all()
+		result = []
+		for issue in issues:
+			date = issue['fecha'].split()
+			if date[0] == fecha:
+				result.append(issue)
+		return result
