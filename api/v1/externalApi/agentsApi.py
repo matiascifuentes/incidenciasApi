@@ -13,3 +13,13 @@ class AgentsApi:
 	def get_all(self):
 		agents = requests.get(self.endpoint)
 		return agents.json()
+
+	def verify_agent(self, agent):
+		agents = self.get_all()
+		i = 0
+		exits = False
+		while i < len(agents) and not exits:
+			if(agents[i]['nombre'] == agent['nombre'] and agents[i]['contrasena'] == agent['contrasena']):
+				exits = True
+			i = i + 1
+		return exits
