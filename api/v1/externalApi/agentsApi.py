@@ -9,3 +9,7 @@ class AgentsApi:
 	def create_agent(self,agent):
 		result = requests.post(self.endpoint, data = agent)
 		return result
+
+	def get_all(self):
+		agents = requests.get(self.endpoint)
+		return agents.json()
