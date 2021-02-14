@@ -7,7 +7,21 @@ from externalApi.agentsApi import AgentsApi
 from externalApi.tokensApi import TokensApi
 app = Flask(__name__)
 
-@app.route('/api/v1/agents', methods=['POST'])
+@app.route('/api/v1/agent/login', methods=['POST'])
+def login():
+    if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
+        return jsonify({'error': "Bad request"}), 400
+    agent = {
+        'nombre': request.json['nombre'],
+        'contrasena': request.json['contrasena']
+    }
+    agentsApi = AgentsApi()
+    isValidAgent = agentsApi.verify_agent(agent)
+    if isValidAgent:
+    	return jsonify({'ok': "Correcto"}), 201
+    return jsonify({'error': "Acceso denegado"}), 401
+
+@app.route('/api/v1/agent', methods=['POST'])
 def create_agent():
     if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
         return jsonify({'error': "Bad request"}), 400
