@@ -4,10 +4,14 @@ import json
 class IssuesApi:
 
 	def __init__(self):
-		self.endpoint = 'https://60280ddadd4afd001754aea8.mockapi.io/'
+		self.endpoint = 'https://60280ddadd4afd001754aea8.mockapi.io/issues'
+
+	def create_issue(self,issue):
+		result = requests.post(self.endpoint, data = issue)
+		return result
 
 	def get_all(self):
-		issues = requests.get(self.endpoint + 'issues')
+		issues = requests.get(self.endpoint)
 		return issues.json()
 
 	def get_for_user(self,usuario):
