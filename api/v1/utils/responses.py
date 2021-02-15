@@ -1,15 +1,17 @@
 from flask import jsonify
 from utils.responseHeader import ResponseHeader
 
-def response(code, success, message):
+def response(code, success, message, data = None):
 	header = ResponseHeader(code, success, message).info()
 	response = {
 		'status': header
 	}
+	if data:
+		response['data'] = data
 	return jsonify(response), code, {'ContentType':'application/json'} 
 
-def http_200():
-	return response(200, True, "OK")
+def http_200(data):
+	return response(200, True, "OK", data)
 
 def http_201():
 	return response(201, True, "Created")
