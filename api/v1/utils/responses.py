@@ -11,6 +11,9 @@ def response(code, success, message):
 def http_200():
 	return response(200, True, "OK")
 
+def http_201():
+	return response(201, True, "Created")
+
 def http_400():
 	return response(400, False, "Bad request")
 
