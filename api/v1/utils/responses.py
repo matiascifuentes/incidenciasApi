@@ -13,3 +13,6 @@ def http_400():
 
 def http_403():
 	return response(403, False, "Forbidden")
+
+def http_409():
+	return response(409, False, "Conflict. Already exists")
