@@ -11,6 +11,9 @@ def http_200():
 def http_400():
 	return response(400, False, "Bad request")
 
+def http_401():
+	return response(401, False, "Unauthorized")
+
 def http_403():
 	return response(403, False, "Forbidden")
 
