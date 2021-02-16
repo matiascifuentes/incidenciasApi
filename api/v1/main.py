@@ -29,17 +29,20 @@ def login():
 
 @app.route('/api/v1/agent', methods=['POST'])
 def create_agent():
-    if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
-        return jsonify({'error': "Bad request"}), 400
-    agent = {
-        'nombre': request.json['nombre'],
-        'contrasena': request.json['contrasena']
-    }
-    agentsApi = AgentsApi()
-    result = agentsApi.create_agent(agent)
-    if result.status_code == 201:
-    	return jsonify({'agent': agent}), 201
-    return jsonify({'error': result.reason}), result.status_code
+	'Crea una nueva cuenta de usuario para el agente'
+	try:
+		if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
+			return http_400()
+		agent = Agent(request.json['nombre'], request.json['contrasena']).json()
+		success, status_code = AgentsApi().create_agent(agent)
+		if success:
+			return http_201(agent)
+		else:
+			if status_code == 409:
+				return http_409()
+			return http_502()
+	except:
+		return http_500()
 
 @app.route('/api/v1/issue', methods=['POST'])
 def create_issue():
@@ -90,7 +93,6 @@ def get_issues_for_date(date):
 		return http_502()
 	except:
 		return http_500()
-		
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=4000, debug=True)
