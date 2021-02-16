@@ -2,24 +2,29 @@ from flask import Flask
 from flask import jsonify
 from flask import request
 import requests
+from models.agent import Agent
 from externalApi.issuesApi import IssuesApi
 from externalApi.agentsApi import AgentsApi
 from externalApi.tokensApi import TokensApi
+from utils.responses import http_200, http_201, http_400, http_401, http_403, http_409, http_500, http_502
 app = Flask(__name__)
 
 @app.route('/api/v1/agent/login', methods=['POST'])
 def login():
-    if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
-        return jsonify({'error': "Bad request"}), 400
-    agent = {
-        'nombre': request.json['nombre'],
-        'contrasena': request.json['contrasena']
-    }
-    agentsApi = AgentsApi()
-    isValidAgent = agentsApi.verify_agent(agent)
-    if isValidAgent:
-    	return jsonify({'ok': "Correcto"}), 201
-    return jsonify({'error': "Acceso denegado"}), 401
+	'Genera un token de acceso si las credenciales existen'
+	try:
+	    if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
+	        return http_400() 
+	    agent = Agent(request.json['nombre'], request.json['contrasena']).json()
+	    isValidAgent = AgentsApi().verify_agent(agent)
+	    if isValidAgent:
+	    	success, token = TokensApi().generate_token(agent['nombre'])
+	    	if success:
+	    		return http_200(token)
+	    	return http_502()
+	    return http_403()
+	except:
+		return http_500()
 
 @app.route('/api/v1/agent', methods=['POST'])
 def create_agent():
