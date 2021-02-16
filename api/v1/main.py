@@ -7,7 +7,7 @@ from models.issue import Issue
 from externalApi.issuesApi import IssuesApi
 from externalApi.agentsApi import AgentsApi
 from externalApi.tokensApi import TokensApi
-from utils.responses import http_200, http_201, http_400, http_401, http_403, http_409, http_500, http_502
+from utils.responses import http_200, http_201, http_400, http_401, http_403, http_404, http_405, http_409, http_500, http_502
 app = Flask(__name__)
 
 @app.route('/api/v1/agent/login', methods=['POST'])
@@ -95,6 +95,20 @@ def get_issues_for_date(date):
 		if success:
 			return http_200(issues)
 		return http_502()
+	except:
+		return http_500()
+
+@app.errorhandler(404)
+def error_404(e):
+	try:
+		return http_404()
+	except:
+		return http_500()
+
+@app.errorhandler(405)
+def error_405(e):
+	try:
+		return http_405()
 	except:
 		return http_500()
 
