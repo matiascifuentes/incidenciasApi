@@ -1,0 +1,1271 @@
+{
+	"info": {
+		"_postman_id": "d4fd36ee-f232-4c8e-9e80-1717be58e64f",
+		"name": "Documentación API Incidencias",
+		"description": "La API de incidencias es una API REST que utiliza códigos de respuesta HTTP y JSON para el traspaso de mensajes. Esta documentación corresponde a la versión 1 (v1) de la API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agent",
+			"item": [
+				{
+					"name": "agent",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/agent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"agent"
+							]
+						},
+						"description": "Permite crear un nuevo objeto Agent."
+					},
+					"response": [
+						{
+							"name": "201 CREATED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:02:55 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"contrasena\": \"12345\",\n    \"nombre\": \"ejemplo@ejemplo.com\"\n}"
+						},
+						{
+							"name": "500 INTERNAL SERVER ERROR",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 500,\n        \"message\": \"Ha ocurrido un error inesperado en el servidor\",\n        \"reason\": \"Internal Server Error\"\n    }\n}"
+						},
+						{
+							"name": "502 BAD GATEWAY",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 502,\n        \"message\": \"Ha ocurrido un error al conectar a la base de datos\",\n        \"reason\": \"Bad Gateway\"\n    }\n}"
+						},
+						{
+							"name": "409 CONFLICT",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent"
+									]
+								}
+							},
+							"status": "CONFLICT",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:04:53 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 409,\n        \"message\": \"El registro ya existe\",\n        \"reason\": \"Conflict\"\n    }\n}"
+						},
+						{
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:04:27 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 400,\n        \"message\": \"El cuerpo de la solicitud es incorrecto\",\n        \"reason\": \"Bad Request\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "agent/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/agent/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"agent",
+								"login"
+							]
+						},
+						"description": "Permite generar un token de acceso a un Agent válido."
+					},
+					"response": [
+						{
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent",
+										"login"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:08:56 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 400,\n        \"message\": \"El cuerpo de la solicitud es incorrecto\",\n        \"reason\": \"Bad Request\"\n    }\n}"
+						},
+						{
+							"name": "502 BAD GATEWAY",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 502,\n        \"message\": \"Ha ocurrido un error al conectar a la base de datos\",\n        \"reason\": \"Bad Gateway\"\n    }\n}"
+						},
+						{
+							"name": "201 CREATED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent",
+										"login"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:08:04 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"agente\": \"ejemplo@ejemplo.com\",\n    \"token\": \"d97d3146d7ed81443cbcd0c830f023f25f823b5e\"\n}"
+						},
+						{
+							"name": "500 INTERNAL SERVER ERROR",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent",
+										"login"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 500,\n        \"message\": \"Ha ocurrido un error inesperado en el servidor\",\n        \"reason\": \"Internal Server Error\"\n    }\n}"
+						},
+						{
+							"name": "403 FORBIDDEN",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ejemplo@ejemplo.com\",\r\n    \"contrasena\": \"erronea\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/agent/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"agent",
+										"login"
+									]
+								}
+							},
+							"status": "FORBIDDEN",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:09:47 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 403,\n        \"message\": \"Usuario o clave incorrecto\",\n        \"reason\": \"Forbidden\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Un objeto Agent representa a un usuario del sistema, el cual posee un nombre de usuario único (nombre) y una contraseña (contrasena). Puede crear un nuevo usuario y realizar inicio de sesión, generando un token de acceso."
+		},
+		{
+			"name": "Issue",
+			"item": [
+				{
+					"name": "issue",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "d97d3146d7ed81443cbcd0c830f023f25f823b5e",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"16-02-2021 00:00:00\",\r\n    \"titulo\": \"Titulo\",\r\n    \"descripcion\": \"Descripcion\",\r\n    \"agente\": \"ejemplo@ejemplo.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/v1/issue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"issue"
+							]
+						},
+						"description": "Permite crear un nuevo objeto Issue. El token debe ser válido y estar asociado al Agent que crea la Issue.\n\nEl formato de la fecha debe ser dd-mm-yyyy hh:mm:ss\n"
+					},
+					"response": [
+						{
+							"name": "201 CREATED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fecha\": \"16-02-2021 16:00:00\",\r\n    \"titulo\": \"Titulo\",\r\n    \"descripcion\": \"Descripcion\",\r\n    \"agente\": \"ejemplo@ejemplo.com\",\r\n    \"token\": \"d97d3146d7ed81443cbcd0c830f023f25f823b5e\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issue"
+									]
+								}
+							},
+							"status": "CREATED",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "129"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:15:16 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"agente\": \"ejemplo@ejemplo.com\",\n    \"descripcion\": \"Descripcion\",\n    \"fecha\": \"16-02-2021 16:00:00\",\n    \"titulo\": \"Titulo\"\n}"
+						},
+						{
+							"name": "401 UNAUTHORIZED",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fecha\": \"16-02-2021 16:00:00\",\r\n    \"titulo\": \"Titulo\",\r\n    \"descripcion\": \"Descripcion\",\r\n    \"agente\": \"ejemplo@ejemplo.com\",\r\n    \"token\": \"tokenNoValido\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issue"
+									]
+								}
+							},
+							"status": "UNAUTHORIZED",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:19:15 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 401,\n        \"message\": \"El token utilizado no es válido\",\n        \"reason\": \"Unauthorized\"\n    }\n}"
+						},
+						{
+							"name": "422 UNPROCESSABLE ENTITY",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "d97d3146d7ed81443cbcd0c830f023f25f823b5e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fecha\": \"50-02/2021 0A-00:00\",\r\n    \"titulo\": \"Titulo\",\r\n    \"descripcion\": \"Descripcion\",\r\n    \"agente\": \"ejemplo@ejemplo.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issue"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 422,\n        \"message\": \"El formato de la fecha es incorrecto o no existe\",\n        \"reason\": \"Unprocessable Entity\"\n    }\n}"
+						},
+						{
+							"name": "400 BAD REQUEST",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fecha\": \"16-02-2021 16:00:00\",\r\n    \"titulo\": \"Titulo\",\r\n    \"descripcion\": \"Descripcion\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issue"
+									]
+								}
+							},
+							"status": "BAD REQUEST",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:18:30 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 400,\n        \"message\": \"El cuerpo de la solicitud es incorrecto\",\n        \"reason\": \"Bad Request\"\n    }\n}"
+						},
+						{
+							"name": "502 BAD GATEWAY",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fecha\": \"16-02-2021 16:00:00\",\r\n    \"titulo\": \"Titulo\",\r\n    \"descripcion\": \"Descripcion\",\r\n    \"agente\": \"ejemplo@ejemplo.com\",\r\n    \"token\": \"d97d3146d7ed81443cbcd0c830f023f25f823b5e\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issue"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 502,\n        \"message\": \"Ha ocurrido un error al conectar a la base de datos\",\n        \"reason\": \"Bad Gateway\"\n    }\n}"
+						},
+						{
+							"name": "500 INTERNAL SERVER ERROR",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fecha\": \"16-02-2021 16:00:00\",\r\n    \"titulo\": \"Titulo\",\r\n    \"descripcion\": \"Descripcion\",\r\n    \"agente\": \"ejemplo@ejemplo.com\",\r\n    \"token\": \"d97d3146d7ed81443cbcd0c830f023f25f823b5e\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issue"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 500,\n        \"message\": \"Ha ocurrido un error inesperado en el servidor\",\n        \"reason\": \"Internal Server Error\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Un objeto Issue representa una incidencia en el sistema. Posee las características de fecha en que ocurrió (fecha), un título (titulo), una descripción (descripcion) y el nombre de usuario (agente) de un Agent registrado en el sistema.\n\nPara crear un Issue es necesario proporcionar un token de acceso válido, por lo cual el agente debe realizar inicio de sesión correctamente."
+		},
+		{
+			"name": "Issues",
+			"item": [
+				{
+					"name": "issues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/issues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"issues"
+							]
+						},
+						"description": "Permite obtener todas las Issue almacenadas."
+					},
+					"response": [
+						{
+							"name": "500 INTERNAL SERVER ERROR",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 500,\n        \"message\": \"Ha ocurrido un error inesperado en el servidor\",\n        \"reason\": \"Internal Server Error\"\n    }\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 20:22:10 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"issues\": [\n        {\n            \"agente\": \"ejemplo@ejemplo.com\",\n            \"descripcion\": \"Descripcion\",\n            \"fecha\": \"16-02-2021 16:00:00\",\n            \"id\": \"1\",\n            \"titulo\": \"Titulo\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "502 BAD GATEWAY",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 502,\n        \"message\": \"Ha ocurrido un error al conectar a la base de datos\",\n        \"reason\": \"Bad Gateway\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "issues/<user>/user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/issues/ejemplo@ejemplo.com/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"ejemplo@ejemplo.com",
+								"user"
+							]
+						},
+						"description": "Permite obtener todas las Issue asociadas al Agent con el nombre de usuario especificado.\n"
+					},
+					"response": [
+						{
+							"name": "500 INTERNAL SERVER ERROR",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues/ejemplo@ejemplo.com/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues",
+										"ejemplo@ejemplo.com",
+										"user"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 500,\n        \"message\": \"Ha ocurrido un error inesperado en el servidor\",\n        \"reason\": \"Internal Server Error\"\n    }\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues/ejemplo@ejemplo.com/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues",
+										"ejemplo@ejemplo.com",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:52:42 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"issues\": [\n        {\n            \"agente\": \"ejemplo@ejemplo.com\",\n            \"descripcion\": \"Descripcion\",\n            \"fecha\": \"16-02-2021 16:00:00\",\n            \"id\": \"6\",\n            \"titulo\": \"Titulo\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "502 BAD GATEWAY",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues/ejemplo@ejemplo.com/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues",
+										"ejemplo@ejemplo.com",
+										"user"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 502,\n        \"message\": \"Ha ocurrido un error al conectar a la base de datos\",\n        \"reason\": \"Bad Gateway\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "issues/<date>/date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/v1/issues/16-02-2021/date",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"16-02-2021",
+								"date"
+							]
+						},
+						"description": "Permite obtener todas las Issue creadas en la fecha especificada. El formato de la fecha debe ser dd-mm-yyyy (Ejemplo: 16-02-2021).\n"
+					},
+					"response": [
+						{
+							"name": "500 INTERNAL SERVER ERROR",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues/16-02-2021/date",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues",
+										"16-02-2021",
+										"date"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 500,\n        \"message\": \"Ha ocurrido un error inesperado en el servidor\",\n        \"reason\": \"Internal Server Error\"\n    }\n}"
+						},
+						{
+							"name": "502 BAD GATEWAY",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues/16-02-2021/date",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues",
+										"16-02-2021",
+										"date"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": {\n        \"code\": 502,\n        \"message\": \"Ha ocurrido un error al conectar a la base de datos\",\n        \"reason\": \"Bad Gateway\"\n    }\n}"
+						},
+						{
+							"name": "200 OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/v1/issues/16-02-2021/date",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"issues",
+										"16-02-2021",
+										"date"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "193"
+								},
+								{
+									"key": "ContentType",
+									"value": "application/json"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/1.0.1 Python/3.7.7"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Feb 2021 19:55:27 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"issues\": [\n        {\n            \"agente\": \"ejemplo@ejemplo.com\",\n            \"descripcion\": \"Descripcion\",\n            \"fecha\": \"16-02-2021 16:00:00\",\n            \"id\": \"6\",\n            \"titulo\": \"Titulo\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Un objeto Issues es una lista de objetos Issue, que se puede obtener sin necesidad de autenticarse. Es posible filtrar los resultados para un Agent especifico mediante su nombre de usuario, y también se puede filtrar para una fecha especifica. "
+		}
+	]
+}
