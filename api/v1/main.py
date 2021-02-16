@@ -43,23 +43,20 @@ def create_agent():
 
 @app.route('/api/v1/issue', methods=['POST'])
 def create_issue():
-    if not request.json or not 'fecha' in request.json or not 'titulo' in request.json or not 'descripcion' in request.json or not 'agente' in request.json or not 'token' in request.json:
-        return jsonify({'error': "Bad request"}), 400
-    issue = {
-        'fecha': request.json['fecha'],
-        'titulo': request.json['titulo'],
-        'descripcion': request.json['descripcion'],
-        'agente': request.json['agente']
-    }
-    tokensApi = TokensApi()
-    correctToken = tokensApi.verify_token(request.json['agente'], request.json['token'])
-    if correctToken:
-    	issueApi = IssuesApi()
-    	result = issueApi.create_issue(issue)
-    	if result.status_code == 201:
-	    	return jsonify({'issue': issue}), 201
-    	return jsonify({'error': result.reason}), result.status_code
-    return jsonify({'error': "Acceso denegado"}), 401
+	'Crea una nueva issue en la base de datos, siempre que el token sea válido'
+	try:
+	    if not request.json or not 'fecha' in request.json or not 'titulo' in request.json or not 'descripcion' in request.json or not 'agente' in request.json or not 'token' in request.json:
+	        return http_400()
+	    issue = Issue(request.json['fecha'], request.json['titulo'], request.json['descripcion'], request.json['agente']).json()
+	    isValidToken = TokensApi().verify_token(request.json['agente'], request.json['token'])
+	    if isValidToken:
+	    	success = IssuesApi().create_issue(issue)
+	    	if success:
+		    	return http_201(issue)
+	    	return http_502()
+	    return http_401()
+	except:
+		return http_500()
 
 @app.route('/api/v1/issues', methods=['GET'])
 def get_issues():
