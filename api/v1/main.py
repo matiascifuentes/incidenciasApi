@@ -7,7 +7,8 @@ from models.issue import Issue
 from externalApi.issuesApi import IssuesApi
 from externalApi.agentsApi import AgentsApi
 from externalApi.tokensApi import TokensApi
-from utils.responses import http_200, http_201, http_400, http_401, http_403, http_404, http_405, http_409, http_500, http_502
+from utils.date_utils import is_valid_date
+from utils.responses import http_200, http_201, http_400, http_401, http_403, http_404, http_405, http_409, http_422, http_500, http_502
 app = Flask(__name__)
 
 @app.route('/api/v1/agent/login', methods=['POST'])
@@ -15,7 +16,7 @@ def login():
 	'Genera un token de acceso si las credenciales existen'
 	try:
 		if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
-			return http_400() 
+			return http_400()
 		agent = Agent(request.json['nombre'], request.json['contrasena']).json()
 		success, isValidAgent = AgentsApi().verify_agent(agent)
 		if success:
@@ -52,6 +53,8 @@ def create_issue():
 	try:
 		if not request.json or not 'fecha' in request.json or not 'titulo' in request.json or not 'descripcion' in request.json or not 'agente' in request.json or not 'token' in request.headers:
 			return http_400()
+		if not is_valid_date(request.json['fecha'], "%d-%m-%Y %H:%M:%S"):
+			return http_422()
 		issue = Issue(request.json['fecha'], request.json['titulo'], request.json['descripcion'], request.json['agente']).json()
 		success, isValidToken = TokensApi().verify_token(request.json['agente'], request.headers['token'])
 		if success:
