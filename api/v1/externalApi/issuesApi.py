@@ -20,12 +20,14 @@ class IssuesApi:
 		return False, None
 
 	def get_for_user(self,usuario):
-		issues = self.get_all()
+		success, data = self.get_all()
 		result = []
-		for issue in issues:
-			if issue['agente'] == usuario:
-				result.append(issue)
-		return result
+		if success:
+			issues = data['issues']
+			for issue in issues:
+				if issue['agente'] == usuario:
+					result.append(issue)
+		return success, {'issues': result}
 
 	def get_for_date(self,fecha):
 		issues = self.get_all()
