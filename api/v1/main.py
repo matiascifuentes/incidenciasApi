@@ -82,9 +82,15 @@ def get_issues_for_user(user):
 
 @app.route('/api/v1/issues/<date>/date', methods=['GET'])
 def get_issues_for_date(date):
-    issuesApi = IssuesApi()
-    issues = issuesApi.get_for_date(date)
-    return jsonify({'issues': issues })
+	'Obtiene las issue asociadas a una fecha especifica'
+	try:
+		success, issues = IssuesApi().get_for_date(date)
+		if success:
+			return http_200(issues)
+		return http_502()
+	except:
+		return http_500()
+		
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=4000, debug=True)
