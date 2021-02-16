@@ -1,10 +1,14 @@
 import requests
+import time
 from datetime import datetime
 from random import seed
 from random import randint
 seed(1)
 
-NUM_ISSUES = 20	#Cantidad de incidencias que se crearán
+NUM_ISSUES = 10	#Cantidad de incidencias que se crearán
+
+# mockAPI comienza a rechazar las peticiones, para reducir la cantidad de errores utilizo un tiempo de espera
+WAIT_TIME = 1 #	Tiempo de espera en segundos
 
 login_url = "http://localhost:8000/api/v1/agent/login"
 issue_url = "http://localhost:8000/api/v1/issue"
@@ -36,6 +40,7 @@ try:
 			}
 			headers = {}
 
+			time.sleep(WAIT_TIME)
 			response = requests.request("POST", issue_url, headers=headers, json=datos)
 			if response.status_code == 201:
 				print("Issue " + str(i) + ": OK")
