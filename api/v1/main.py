@@ -22,7 +22,7 @@ def login():
 			if isValidAgent:
 				success, token = TokensApi().generate_token(agent['nombre'])
 				if success:
-					return http_200(token)
+					return http_201(token)
 				return http_502()
 			return http_403()
 		return http_502()
@@ -113,4 +113,4 @@ def error_405(e):
 		return http_500()
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=4000, debug=True)
+    app.run(host="0.0.0.0", port=4000, debug=False)
