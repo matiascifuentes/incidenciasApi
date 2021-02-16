@@ -14,16 +14,18 @@ app = Flask(__name__)
 def login():
 	'Genera un token de acceso si las credenciales existen'
 	try:
-	    if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
-	        return http_400() 
-	    agent = Agent(request.json['nombre'], request.json['contrasena']).json()
-	    isValidAgent = AgentsApi().verify_agent(agent)
-	    if isValidAgent:
-	    	success, token = TokensApi().generate_token(agent['nombre'])
-	    	if success:
-	    		return http_200(token)
-	    	return http_502()
-	    return http_403()
+		if not request.json or not 'nombre' in request.json or not 'contrasena' in request.json:
+			return http_400() 
+		agent = Agent(request.json['nombre'], request.json['contrasena']).json()
+		success, isValidAgent = AgentsApi().verify_agent(agent)
+		if success:
+			if isValidAgent:
+				success, token = TokensApi().generate_token(agent['nombre'])
+				if success:
+					return http_200(token)
+				return http_502()
+			return http_403()
+		return http_502()
 	except:
 		return http_500()
 
