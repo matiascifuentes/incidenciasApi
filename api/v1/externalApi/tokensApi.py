@@ -9,8 +9,10 @@ class TokensApi:
 		self.endpoint = 'https://60280ddadd4afd001754aea8.mockapi.io/tokens'
 
 	def get_all(self):
-		tokens = requests.get(self.endpoint)
-		return tokens.json()
+		result = requests.get(self.endpoint)
+		if result.status_code == 200:
+			return True, result.json()
+		return False, None
 
 	def generate_token(self, agent):
 		token = secrets.token_hex(20)
@@ -21,11 +23,13 @@ class TokensApi:
 		return success, Token(agent,token).json()
 
 	def verify_token(self, agent, token):
-		tokens = self.get_all()
-		i = 0
-		exits = False
-		while i < len(tokens) and not exits:
-			if(tokens[i]['agente'] == agent and tokens[i]['token'] == token):
-				exits = True
-			i = i + 1
-		return exits
+		success, tokens = self.get_all()
+		if success:
+			i = 0
+			exists = False
+			while i < len(tokens) and not exists:
+				if(tokens[i]['agente'] == agent and tokens[i]['token'] == token):
+					exists = True
+				i = i + 1
+			return success, exists
+		return success, None
