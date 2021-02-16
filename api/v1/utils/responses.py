@@ -28,5 +28,8 @@ def http_403():
 def http_409():
 	return response(False, 409, "Conflict", "El registro ya existe")
 
+def http_500():
+	return response(False, 500, "Internal Server Error", "Ha ocurrido un error inesperado en el servidor")
+
 def http_502():
 	return response(False, 502, "Bad Gateway", "Ha ocurrido un error al conectar a la base de datos")
