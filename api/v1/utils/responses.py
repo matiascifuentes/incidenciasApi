@@ -17,7 +17,7 @@ def http_201(data):
 	return response(True, 201, data = data)
 
 def http_400():
-	return response(False, 400, "Bad request", "El cuerpo de la solicitud es incorrecto")
+	return response(False, 400, "Bad Request", "El cuerpo de la solicitud es incorrecto")
 
 def http_401():
 	return response(False, 401, "Unauthorized", "El token utilizado no es válido")
@@ -27,6 +27,9 @@ def http_403():
 
 def http_404():
 	return response(False, 404, "Not Found", "El recurso solicitado no existe")
+
+def http_405():
+	return response(False, 405, "Method Not Allowed ", "El método no es permitido")
 
 def http_409():
 	return response(False, 409, "Conflict", "El registro ya existe")
