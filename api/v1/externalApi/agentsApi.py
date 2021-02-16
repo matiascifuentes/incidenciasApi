@@ -8,7 +8,10 @@ class AgentsApi:
 
 	def create_agent(self,agent):
 		result = requests.post(self.endpoint, data = agent)
-		return result
+		success = False
+		if(result.status_code == 201):
+			success = True
+		return success
 
 	def get_all(self):
 		agents = requests.get(self.endpoint)
