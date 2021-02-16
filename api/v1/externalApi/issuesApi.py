@@ -11,8 +11,10 @@ class IssuesApi:
 		return result
 
 	def get_all(self):
-		issues = requests.get(self.endpoint)
-		return issues.json()
+		result = requests.get(self.endpoint)
+		if result.status_code == 200:
+			return True, {'issues': result.json()}
+		return False, None
 
 	def get_for_user(self,usuario):
 		issues = self.get_all()
