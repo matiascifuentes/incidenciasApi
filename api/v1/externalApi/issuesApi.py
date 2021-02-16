@@ -30,10 +30,12 @@ class IssuesApi:
 		return success, {'issues': result}
 
 	def get_for_date(self,fecha):
-		issues = self.get_all()
+		success, data = self.get_all()
 		result = []
-		for issue in issues:
-			date = issue['fecha'].split()
-			if date[0] == fecha:
-				result.append(issue)
-		return result
+		if success:
+			issues = data['issues']
+			for issue in issues:
+				date = issue['fecha'].split()
+				if date[0] == fecha:
+					result.append(issue)
+		return success, {'issues': result}
