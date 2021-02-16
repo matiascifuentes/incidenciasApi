@@ -35,10 +35,11 @@ try:
 				"fecha": fecha,
 				"titulo": "Incidencia " + str(randint(1,1000)),
 				"descripcion": "Descripcion",
-				"agente": usuario['nombre'],
+				"agente": usuario['nombre']
+			}
+			headers = {
 				"token": token
 			}
-			headers = {}
 
 			time.sleep(WAIT_TIME)
 			response = requests.request("POST", issue_url, headers=headers, json=datos)
