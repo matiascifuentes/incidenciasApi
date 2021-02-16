@@ -34,6 +34,9 @@ def http_405():
 def http_409():
 	return response(False, 409, "Conflict", "El registro ya existe")
 
+def http_422():
+	return response(False, 422, "Unprocessable Entity", "El formato de la fecha es incorrecto o no existe")
+
 def http_500():
 	return response(False, 500, "Internal Server Error", "Ha ocurrido un error inesperado en el servidor")
 
