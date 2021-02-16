@@ -50,16 +50,18 @@ def create_agent():
 def create_issue():
 	'Crea una nueva issue en la base de datos, siempre que el token sea válido'
 	try:
-	    if not request.json or not 'fecha' in request.json or not 'titulo' in request.json or not 'descripcion' in request.json or not 'agente' in request.json or not 'token' in request.json:
-	        return http_400()
-	    issue = Issue(request.json['fecha'], request.json['titulo'], request.json['descripcion'], request.json['agente']).json()
-	    isValidToken = TokensApi().verify_token(request.json['agente'], request.json['token'])
-	    if isValidToken:
-	    	success = IssuesApi().create_issue(issue)
-	    	if success:
-		    	return http_201(issue)
-	    	return http_502()
-	    return http_401()
+		if not request.json or not 'fecha' in request.json or not 'titulo' in request.json or not 'descripcion' in request.json or not 'agente' in request.json or not 'token' in request.json:
+			return http_400()
+		issue = Issue(request.json['fecha'], request.json['titulo'], request.json['descripcion'], request.json['agente']).json()
+		success, isValidToken = TokensApi().verify_token(request.json['agente'], request.json['token'])
+		if success:
+			if isValidToken:
+				success = IssuesApi().create_issue(issue)
+				if success:
+					return http_201(issue)
+				return http_502()
+			return http_401()
+		return http_502()
 	except:
 		return http_500()
 
