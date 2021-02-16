@@ -8,7 +8,10 @@ class IssuesApi:
 
 	def create_issue(self,issue):
 		result = requests.post(self.endpoint, data = issue)
-		return result
+		success = False
+		if(result.status_code == 201):
+			success = True
+		return success
 
 	def get_all(self):
 		result = requests.get(self.endpoint)
