@@ -71,9 +71,14 @@ def get_issues():
 
 @app.route('/api/v1/issues/<user>/user', methods=['GET'])
 def get_issues_for_user(user):
-    issuesApi = IssuesApi()
-    issues = issuesApi.get_for_user(user)
-    return jsonify({'issues': issues })
+	'Obtiene las issue asociadas a un usuario especifico'
+	try:
+		success, issues = IssuesApi().get_for_user(user)
+		if success:
+			return http_200(issues)
+		return http_502()
+	except:
+		return http_500()
 
 @app.route('/api/v1/issues/<date>/date', methods=['GET'])
 def get_issues_for_date(date):
