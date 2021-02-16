@@ -3,6 +3,7 @@ from flask import jsonify
 from flask import request
 import requests
 from models.agent import Agent
+from models.issue import Issue
 from externalApi.issuesApi import IssuesApi
 from externalApi.agentsApi import AgentsApi
 from externalApi.tokensApi import TokensApi
@@ -62,9 +63,14 @@ def create_issue():
 
 @app.route('/api/v1/issues', methods=['GET'])
 def get_issues():
-    issuesApi = IssuesApi()
-    issues = issuesApi.get_all()
-    return jsonify({'issues': issues })
+	'Obtiene todas las issue desde la base de datos'
+	try:
+		success, issues = IssuesApi().get_all()
+		if success:
+			return http_200(issues)
+		return http_502()
+	except:
+		return http_500()
 
 @app.route('/api/v1/issues/<user>/user', methods=['GET'])
 def get_issues_for_user(user):
