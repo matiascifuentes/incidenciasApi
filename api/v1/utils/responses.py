@@ -25,6 +25,9 @@ def http_401():
 def http_403():
 	return response(False, 403, "Forbidden", "Usuario o clave incorrecto")
 
+def http_404():
+	return response(False, 404, "Not Found", "El recurso solicitado no existe")
+
 def http_409():
 	return response(False, 409, "Conflict", "El registro ya existe")
 
