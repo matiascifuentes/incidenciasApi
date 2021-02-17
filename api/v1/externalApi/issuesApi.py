@@ -1,5 +1,6 @@
 import requests
 import json
+from utils.date_utils import is_same_date
 
 class IssuesApi:
 
@@ -36,6 +37,6 @@ class IssuesApi:
 			issues = data['issues']
 			for issue in issues:
 				date = issue['fecha'].split()
-				if date[0] == fecha:
+				if is_same_date(date[0],fecha,"%d-%m-%Y"):
 					result.append(issue)
 		return success, {'issues': result}
