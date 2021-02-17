@@ -3,46 +3,45 @@
 ## API
 
 ### Pre-requisitos
-	_Docker instalado y ejecutandose_
+	* Docker instalado y ejecutandose
 
 ### Instalación
 
-	_Para crear una imagen a partir del archivo Dockerfile se debe ejecutar en la raíz de la carpeta 'incidenciasApi' la siguiente instrucción:_
-	```
+	Para crear una imagen a partir del archivo Dockerfile se debe ejecutar en la raíz de la carpeta 'incidenciasApi' la siguiente instrucción:
+
 		docker build -t incidencias .
-	```
 
-	_Para ejecutar el contenedor con la imagen creada se debe ejecutar el siguiente comando:_
-	```
+
+	Para ejecutar el contenedor con la imagen creada se debe ejecutar el siguiente comando:
+
 		docker run -it --publish 8000:4000 incidencias
-	```
 
-	_Una vez desplegada se puede acceder a la api mediante el dominio http://localhost:8000_
+
+	Una vez desplegada se puede acceder a la api mediante el dominio http://localhost:8000
 	
 ## Script
 
-	_Inserta 10 incidencias en la base de datos_
+	Inserta 10 incidencias en la base de datos
 
 ### Pre-requisitos
-	_API ejecutandose_
-	_Abrir otra terminal_
-	_El usuario utilizado es ejemplo@ejemplo.com con contraseña 12345, el cual debe existir en la base de datos_
+	* API ejecutandose
+	* Abrir otra terminal
+	* El usuario utilizado es ejemplo@ejemplo.com con contraseña 12345, el cual debe existir en la base de datos
 
 ### Ejecución
 
 #### En caso de tener instalado python3 y la biblioteca requests
-	_Acceder a la carpeta scripts y ejecutar la instrucción:_
-	```
+	Acceder a la carpeta scripts y ejecutar la instrucción:
+	
 		python agente.py
-	```
+	
 
 #### En caso contrario utilizar entorno virtual
-	_Acceder a la carpeta venv/Scripts y ejecutar:_
-	```
-		activate.bat
-	```
+	Acceder a la carpeta venv/Scripts y ejecutar:
 
-	_Volver a la carpeta raíz de incidenciasApi y acceder a la carpeta scripts, ejecutar:_
-	```
+		activate.bat
+	
+
+	Volver a la carpeta raíz de incidenciasApi y acceder a la carpeta scripts, ejecutar:
+	
 		python agente.py
-	```
